@@ -12,7 +12,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class LoginComponent {
   email = new FormControl("", [Validators.required, Validators.email]);
 
-  password = new FormControl("", [Validators.minLength(6)]);
+  password = new FormControl("", [Validators.required, Validators.minLength(6)]);
 
   loginForm = new FormGroup({ email: this.email, password: this.password });
 }
