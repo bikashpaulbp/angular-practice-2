@@ -1,1 +1,9 @@
-<p>signup works!</p>
+<form [formGroup]="signUpGroup" class="container">
+  <h3>Please sign up</h3>
+  <input type="email" class="email" placeholder="Enter Your Email" formControlName="email">
+  <h5 class="red-text" [hidden]="email.valid || email.untouched">Please enter a valid email</h5>
+  <input type="password" class="password" placeholder="Enter Your Password" formControlName="password">
+  <h5 class="red-text" [hidden]="password.valid || password.untouched">Please enter a valid password</h5>
+  <button [disabled]="signUpGroup.invalid" class="btn green">Sign Up</button>
+  <button type="reset" class="btn red">Reset</button>
+</form>

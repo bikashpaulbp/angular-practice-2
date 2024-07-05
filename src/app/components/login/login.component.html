@@ -5,5 +5,5 @@
     <input type="password" class="password" placeholder="enter your password" [formControl]="password">
     <h6 class="red-text" [hidden]="password.valid || password.untouched">Please enter valid password</h6>
     <button class="green btn" [disabled]="loginForm.invalid" >Login</button>
-    <button class="red btn">reset</button>
+    <button type="reset" class="red btn">reset</button>
 </form>
