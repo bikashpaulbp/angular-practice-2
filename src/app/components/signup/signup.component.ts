@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +17,7 @@ import { Router } from '@angular/router';
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   email = new FormControl('', [Validators.required, Validators.email]);
 
@@ -28,6 +29,10 @@ export class SignupComponent {
   signUpGroup = new FormGroup({ email: this.email, password: this.password });
 
   onSignUp() {
-    this.router.navigate(['/login']);
+    this.authService.register(
+      this.signUpGroup.value.email!,
+      this.signUpGroup.value.password!
+    );
+    // this.router.navigate(['/login']);
   }
 }

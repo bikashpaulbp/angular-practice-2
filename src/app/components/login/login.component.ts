@@ -1,6 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +16,25 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  email = new FormControl("", [Validators.required, Validators.email]);
+  constructor(private authService: AuthService) {}
 
-  password = new FormControl("", [Validators.required, Validators.minLength(6)]);
+  email = new FormControl('', [Validators.required, Validators.email]);
+
+  password = new FormControl('', [
+    Validators.required,
+    Validators.minLength(6),
+  ]);
 
   loginForm = new FormGroup({ email: this.email, password: this.password });
 
+  login() {
+    this.authService.login(
+      this.loginForm.value.email!,
+      this.loginForm.value.password!
+    );
+  }
 
+  reset() {
+    this.loginForm.reset();
+  }
 }
