@@ -1,0 +1,15 @@
+<form class="container" [formGroup] = "codeForm">
+    <h4>Please create code snippet</h4>
+    <br>
+    <input type="text" class="tittle" placeholder="enter your tittle" [formControl]="tittle">
+   
+    <h6 class="red-text" [hidden]="tittle.valid || tittle.untouched">Please enter tittle</h6>
+    <br>
+    <textarea type="text" class="code" placeholder="enter your code" [formControl]="code"></textarea>
+   
+    <h6 class="red-text" [hidden]="code.valid || code.untouched">Please enter code</h6>
+    <br>
+    <button class="green btn" [disabled]="codeForm.invalid" (click)="save()">Create</button>
+   
+</form>
+
