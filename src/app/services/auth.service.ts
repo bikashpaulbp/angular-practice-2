@@ -19,7 +19,6 @@ export class AuthService {
       .then((userCredential) => {
         const user = userCredential.user;
         this.router.navigate(['/']);
-      
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -32,14 +31,14 @@ export class AuthService {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        this.router.navigate(['/']);
+        this.router.navigate(['/code']);
         this.isLoggedIn = true;
       })
 
       .catch((error) => {
         const errorMessage = error.message;
         alert(errorMessage);
-        console.log(errorMessage)
+        console.log(errorMessage);
       });
   }
 }
